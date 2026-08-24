@@ -90,10 +90,13 @@ publishing {
 
     repositories {
         maven {
-            name = "owlMaven"
+            name = "polyfrost"
             def repository = project.version.toString().contains("beta") || project.version.toString().contains("alpha") ? "snapshots" : "releases"
-            url = "https://maven.axolotlclient.com/" + repository
-            credentials(PasswordCredentials)
+            url = "https://repo.polyfrost.org/" + repository
+            credentials {
+                username = findProperty("polyfrostRepoUsername")
+                password = findProperty("polyfrostRepoToken")
+            }
             authentication {
                 basic(BasicAuthentication)
             }
