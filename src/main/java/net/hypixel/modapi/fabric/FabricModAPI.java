@@ -15,6 +15,7 @@ import net.minecraft.client.Minecraft;
 import net.ornithemc.osl.core.api.util.NamespacedIdentifier;
 import net.ornithemc.osl.core.api.util.NamespacedIdentifiers;
 import net.ornithemc.osl.networking.api.ChannelRegistry;
+import net.ornithemc.osl.networking.api.StringChannelIdentifierParser;
 import net.ornithemc.osl.networking.api.client.ClientConnectionEvents;
 import net.ornithemc.osl.networking.api.client.ClientPlayNetworking;
 import org.jetbrains.annotations.ApiStatus;
@@ -98,7 +99,7 @@ public class FabricModAPI implements ClientModInitializer, HypixelModAPIImplemen
 
 	private static void registerClientbound(String identifier) {
 		try {
-			var clientboundId = NamespacedIdentifiers.parse(identifier);
+			var clientboundId = StringChannelIdentifierParser.fromString(identifier);
 
 			// Also register the global receiver for handling incoming packets during PLAY and CONFIGURATION
 			ChannelRegistry.register(clientboundId, true, false);
@@ -143,7 +144,7 @@ public class FabricModAPI implements ClientModInitializer, HypixelModAPIImplemen
 
 	private static void registerServerbound(String identifier) {
 		try {
-			ChannelRegistry.register(NamespacedIdentifiers.parse(identifier), false, true);
+			ChannelRegistry.register(StringChannelIdentifierParser.fromString(identifier), false, true);
 		} catch (IllegalArgumentException ignored) {
 
 		}
