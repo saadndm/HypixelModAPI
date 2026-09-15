@@ -16,6 +16,9 @@
       "net.hypixel.modapi.fabric.FabricModAPI"
     ]
   },
+  "mixins": [
+    "hypixel-mod-api.mixins.json"
+  ],
   "depends": {
     "fabricloader": ">=0.15.0",
     "osl-networking": "*",
