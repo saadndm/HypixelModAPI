@@ -1,7 +1,7 @@
 plugins {
-    id 'fabric-loom' version '1.15.+'
+    id 'fabric-loom' version '1.17.20'
     id 'maven-publish'
-    id 'ploceus' version '1.15.+'
+    id 'ploceus' version '1.17.7'
 }
 
 version = "${project.mod_version}+mc${project.minecraft_version}"

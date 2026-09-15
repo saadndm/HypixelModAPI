@@ -21,7 +21,7 @@
   ],
   "depends": {
     "fabricloader": ">=0.15.0",
-    "osl-networking": "*",
+    "osl-networking": ">=0.10.0",
     "minecraft": ">=${minecraft_version}"
   }
 }

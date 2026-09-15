@@ -41,7 +41,7 @@ public class FabricModAPI implements ClientModInitializer, HypixelModAPIImplemen
 	@Override
 	public void onInit() {
 		HypixelModAPI.getInstance().createHandler(ClientboundHelloPacket.class, packet -> onHypixel = true);
-		ClientConnectionEvents.DISCONNECT.register(client -> onHypixel = false);
+		ClientConnectionEvents.DISCONNECT.register(context -> onHypixel = false);
 
 		if (DEBUG_MODE) {
 			LOGGER.info("Debug mode is enabled!");
