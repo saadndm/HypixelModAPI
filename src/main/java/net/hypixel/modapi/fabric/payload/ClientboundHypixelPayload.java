@@ -32,18 +32,14 @@ public class ClientboundHypixelPayload implements PacketPayload {
 
 	@Override
 	public void read(PacketBuffer buf) throws IOException {
-		try {
-			PacketSerializer serializer = new PacketSerializer(buf);
-			boolean success = serializer.readBoolean();
-			if (!success) {
-				this.errorReason = ErrorReason.getById(serializer.readVarInt());
-				return;
-			}
-
-			this.packet = HypixelModAPI.getInstance().getRegistry().createClientboundPacket(id, serializer);
-		} finally {
-			buf.release();
+		PacketSerializer serializer = new PacketSerializer(buf);
+		boolean success = serializer.readBoolean();
+		if (!success) {
+			this.errorReason = ErrorReason.getById(serializer.readVarInt());
+			return;
 		}
+
+		this.packet = HypixelModAPI.getInstance().getRegistry().createClientboundPacket(id, serializer);
 	}
 
 	@Override
